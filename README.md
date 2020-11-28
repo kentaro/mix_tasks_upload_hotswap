@@ -34,7 +34,7 @@ config :recombinant,
   cookie: :"secret token shared between nodes"
 ```
 
-See [example/config/config.exs](./example/config/config.ex) for working example.
+See [example/config/config.exs](./example/config/config.exs) for working example.
 
 ### 2. Start node through which your code changes are deployed
 
