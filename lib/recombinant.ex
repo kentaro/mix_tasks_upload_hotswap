@@ -26,22 +26,22 @@ defmodule Recombinant do
   end
 
   defp handle_connect(true, node_name) do
-    IO.puts("Successfully connected to #{node_name}.")
+    IO.puts("Successfully connected to #{node_name}")
   end
 
   defp handle_connect(false, node_name) do
-    exit("Failed to connect to #{node_name}.")
+    exit("Failed to connect to #{node_name}")
   end
 
   defp handle_connect(:ignored, node_name) do
-    exit("#{node_name} is not alive.")
+    exit("#{node_name} is not alive")
   end
 
   defp handle_load_module({:ok, [{_, :loaded, _}]}, module, node_name) do
-      IO.puts("Successfully #{module} is deployed to #{node_name}.")
+      IO.puts("Successfully #{module} is deployed to #{node_name}")
   end
 
   defp handle_load_module({:error, reason}, module, node_name) do
-    IO.warn("Failed to deploy #{module} to #{node_name}: #{reason}.")
+    IO.warn("Failed to deploy #{module} to #{node_name}: #{reason}")
   end
 end
