@@ -110,9 +110,9 @@ Nerves environment
 
 Compiling 2 files (.ex)
 Generated example app
-Successfully connected to example@nerves.local.
-Successfully Elixir.Example is deployed to example@nerves.local.
-Successfully Elixir.Example.Application is deployed to example@nerves.local.
+Successfully connected to example@nerves.local
+Successfully Elixir.Example is deployed to example@nerves.local
+Successfully Elixir.Example.Application is deployed to example@nerves.local
 ```
 
 Now you can see the changes applied into the code on the device:
