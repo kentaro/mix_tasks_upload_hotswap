@@ -11,7 +11,7 @@ Add `mix_tasks_upload_hotswap` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:mix_tasks_upload_hotswap, git: "git@github.com:kentaro/mix_tasks_upload_hotswap.git"}
+    {:mix_tasks_upload_hotswap, git: "git@github.com:kentaro/mix_tasks_upload_hotswap.git", only: :dev}
   ]
 end
 ```
