@@ -1,18 +1,14 @@
-defmodule Recombinant do
+defmodule Mix.Tasks.Upload.Hotswap do
+  use Mix.Task
+
   @moduledoc File.read!("./README.md")
+  @requirements ["app.config"]
+  @shortdoc "Deploy modules to remote nodes."
 
-  @doc """
-  Deploys the local changes to remote nodes.
-
-  ## Examples
-
-      $ mix recombinant.deploy
-
-  """
-  def deploy do
-    app_name = Application.get_env(:recombinant, :app_name)
-    node_name = Application.get_env(:recombinant, :node_name)
-    cookie = Application.get_env(:recombinant, :cookie)
+  def run(_) do
+    app_name = Application.get_env(:mix_tasks_upload_hotswap, :app_name)
+    node_name = Application.get_env(:mix_tasks_upload_hotswap, :node_name)
+    cookie = Application.get_env(:mix_tasks_upload_hotswap, :cookie)
 
     System.cmd("epmd", ["-daemon"])
     {:ok, _} = Node.start(:"me@localhost")

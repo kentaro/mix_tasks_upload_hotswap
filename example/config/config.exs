@@ -32,8 +32,8 @@ if Mix.target() != :host do
   import_config "target.exs"
 end
 
-# Configurations for Recombinant
-config :recombinant,
+# Configurations for `mix upload.hotswap`
+config :mix_tasks_upload_hotswap,
   app_name: :example,
   node_name: :"example@nerves.local",
   cookie: :"secret token shared between nodes"

@@ -1,17 +1,17 @@
-# Recombinant
+# Mix.Tasks.Upload.Hotswap
 
-This package provides a mix task, `recombinant.deploy`, to deploy local changes to remote node and to apply them without rebooting whole the application.
+This package provides a mix task named `mix upload.hotswap` to deploy local changes to remote node(s) and to apply them without rebooting whole the application (the so-called `hot code swapping`).
 
-It could be convenient when you code for a [Nerves](https://www.nerves-project.org/) device because it's much faster than `mix firmware && mix upload`. Although you eventually need to update the firmware if you want to persist the changes onto the device, this task could be your help in development phase because it allows you to quickly confirm if your changes work fine on the device without waiting long time.
+It could be convenient when you code for IoT devices backed by [Nerves](https://www.nerves-project.org/) because it's much faster than `mix firmware && mix upload`. Although you eventually need to update the firmware if you want to persist the changes onto devices, this task could be your help in development phase because it allows you to quickly confirm if your changes work fine on the devices without waiting long time.
 
 ## Installation
 
-Add `recombinant` to your list of dependencies in `mix.exs`:
+Add `mix_tasks_upload_hotswap` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:recombinant, git: "git@github.com:kentaro/recombinant.git"}
+    {:mix_tasks_upload_hotswap, git: "git@github.com:kentaro/mix_tasks_upload_hotswap.git"}
   ]
 end
 ```
@@ -20,16 +20,16 @@ end
 
 To use this package, you need to meet the requirements below:
 
-1. Add configurations for Recombinant
+1. Add configurations for this task
 2. Start node through which your code changes are deployed
 
-### 1. Add configurations for Recombinant
+### 1. Add configurations for `mix upload.hotswap`
 
-The task `mix recombinant.deploy` depends on the settings below are available:
+The task `mix upload.hotswap` depends on the settings below are available:
 
 ```elixir
-config :recombinant,
-  app_name: :example,
+config :,
+  app_name: :mix_tasks_upload_hotswap,
   node_name: :"example@nerves.local",
   cookie: :"secret token shared between nodes"
 ```
@@ -43,8 +43,8 @@ Start a node which has the name and cookie set in the configuration above. The c
 ```elixir
 if Application.get_env(:example, :env) == :dev do
   System.cmd("epmd", ["-daemon"])
-  Node.start(Application.get_env(:recombinant, :node_name))
-  Node.set_cookie(Application.get_env(:recombinant, :cookie))
+  Node.start(Application.get_env(:mix_tasks_upload_hotswap, :node_name))
+  Node.set_cookie(Application.get_env(:mix_tasks_upload_hotswap, :cookie))
 end
 ```
 
@@ -63,7 +63,7 @@ See [example/lib/example/application.ex](./example/lib/example/application.ex) f
 Make some changes into your code and just execute the mix task as below:
 
 ```sh
-$ mix recombinant.deploy
+$ mix upload.hotswap
 ```
 
 ### Example
@@ -106,7 +106,7 @@ index ca49896..81c696a 100644
 You can deploy the changes to the device as below:
 
 ```sh
-$ mix recombinant.deploy
+$ mix upload.hotswap
 ==> nerves
 ==> example
 

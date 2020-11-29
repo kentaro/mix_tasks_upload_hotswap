@@ -1,9 +1,9 @@
-defmodule Recombinant.MixProject do
+defmodule Mix.Tasks.Upload.Hotswap.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :recombinant,
+      app: :mix_tasks_upload_hotswap,
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,

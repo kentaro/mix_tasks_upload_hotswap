@@ -52,7 +52,7 @@ defmodule Example.MixProject do
       {:nerves_system_x86_64, "~> 1.13", runtime: false, targets: :x86_64},
 
       # Local dependencies
-      {:recombinant, path: "../"},
+      {:mix_tasks_upload_hotswap, path: "../"},
     ]
   end
 

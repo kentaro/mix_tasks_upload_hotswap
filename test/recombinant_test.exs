@@ -1,8 +1,8 @@
-defmodule RecombinantTest do
+defmodule MixTasksUploadHotswapTest do
   use ExUnit.Case
-  doctest Recombinant
+  doctest Mix.Tasks.Upload.Hotswap
 
   test "greets the world" do
-    assert Recombinant.hello() == :world
+    assert Mix.Tasks.Upload.Hotswap.hello() == :world
   end
 end
