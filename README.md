@@ -28,11 +28,13 @@ To use this package, you need to meet the requirements below:
 The task `mix upload.hotswap` depends on the settings below are available:
 
 ```elixir
-config :,
-  app_name: :mix_tasks_upload_hotswap,
-  node_name: :"example@nerves.local",
+config :mix_tasks_upload_hotswap,
+  app_name: :example,
+  nodes: [:"example@nerves.local"],
   cookie: :"secret token shared between nodes"
 ```
+
+All the pairs above are required to be set.
 
 See [example/config/config.exs](./example/config/config.exs) for working example.
 
@@ -41,9 +43,11 @@ See [example/config/config.exs](./example/config/config.exs) for working example
 Start a node which has the name and cookie set in the configuration above. The code should be like below:
 
 ```elixir
+# Start a node through which local code changes are deployed
+# only when the device is running in the develop environment
 if Application.get_env(:example, :env) == :dev do
   System.cmd("epmd", ["-daemon"])
-  Node.start(Application.get_env(:mix_tasks_upload_hotswap, :node_name))
+  Node.start(:"example@nerves.local")
   Node.set_cookie(Application.get_env(:mix_tasks_upload_hotswap, :cookie))
 end
 ```

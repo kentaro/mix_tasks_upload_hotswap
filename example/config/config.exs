@@ -35,5 +35,5 @@ end
 # Configurations for `mix upload.hotswap`
 config :mix_tasks_upload_hotswap,
   app_name: :example,
-  node_name: :"example@nerves.local",
+  nodes: [:"example@nerves.local"],
   cookie: :"secret token shared between nodes"
