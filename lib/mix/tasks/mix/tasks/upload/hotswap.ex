@@ -3,7 +3,7 @@ defmodule Mix.Tasks.Upload.Hotswap do
 
   @moduledoc File.read!("./README.md")
   @requirements ["app.config"]
-  @shortdoc "Deploy modules to remote nodes."
+  @shortdoc "Deploy local code changes to remote node(s) in hot-code-swapping manner"
 
   @config_key :mix_tasks_upload_hotswap
 
