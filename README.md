@@ -41,14 +41,20 @@ See [example/config/config.exs](./example/config/config.exs) for working example
 Start a node which has the name and cookie set in the configuration above. The code should be like below:
 
 ```elixir
-System.cmd("epmd", ["-daemon"])
-Node.start(Application.get_env(:recombinant, :node_name))
-Node.set_cookie(Application.get_env(:recombinant, :cookie))
+if Application.get_env(:example, :env) == :dev do
+  System.cmd("epmd", ["-daemon"])
+  Node.start(Application.get_env(:recombinant, :node_name))
+  Node.set_cookie(Application.get_env(:recombinant, :cookie))
+end
+```
+
+Notice that the node starts only when the `:env` of the application is set to `:dev`. Below is an example to configure the environment value in `config.exs`:
+
+```elixir
+config :example, env: Mix.env()
 ```
 
 See [example/lib/example/application.ex](./example/lib/example/application.ex) for working example.
-
-(**Any suggestion how to enable it only for development environment?**)
 
 ## Usage
 

@@ -30,10 +30,13 @@ defmodule Example.Application do
   end
 
   def children(_target) do
-    # Starts a node through which changes are deployed
-    System.cmd("epmd", ["-daemon"])
-    Node.start(Application.get_env(:recombinant, :node_name))
-    Node.set_cookie(Application.get_env(:recombinant, :cookie))
+    # Starts a node through which local code changes are deployed
+    # only when the device is running in the develop environment
+    if Application.get_env(:example, :env) == :dev do
+      System.cmd("epmd", ["-daemon"])
+      Node.start(Application.get_env(:recombinant, :node_name))
+      Node.set_cookie(Application.get_env(:recombinant, :cookie))
+    end
 
     [
       # Children for all targets except host
