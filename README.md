@@ -1,8 +1,8 @@
 # Recombinant
 
-This package provides a mix task, `recombinant.deploy`, to deploy local changes to remote node and to apply them without rebooting.
+This package provides a mix task, `recombinant.deploy`, to deploy local changes to remote node and to apply them without rebooting whole the application.
 
-It could be convenient when you code for a Nerves device; the task `mix recombinant.deploy` deploys your local changes to the device and apply them without rebooting. It's much faster than `mix firmware && mix upload`.
+It could be convenient when you code for a [Nerves](https://www.nerves-project.org/) device because it's much faster than `mix firmware && mix upload`. Although you eventually need to update the firmware if you want to persist the changes onto the device, this task could be your help in development phase because it allows you to quickly confirm if your changes work fine on a device without waiting long time.
 
 ## Installation
 
@@ -126,8 +126,6 @@ iex(example@nerves.local)1> Example.hello
 ```
 
 It's much faster than `mix firmware && mix upload`.
-
-Though you eventually need to update the firmware if you want to persist the changes, this task could be very convenient in development phase because it allows you to quickly confirm if your change work fine on a device without waiting long time.
 
 ## Acknowledgement
 
