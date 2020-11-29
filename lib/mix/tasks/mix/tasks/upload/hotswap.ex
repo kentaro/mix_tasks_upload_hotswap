@@ -11,11 +11,12 @@ defmodule Mix.Tasks.Upload.Hotswap do
     cookie = Application.get_env(:mix_tasks_upload_hotswap, :cookie)
 
     System.cmd("epmd", ["-daemon"])
-    {:ok, _} = Node.start(:"me@localhost")
+    {:ok, _} = Node.start(:me@localhost)
     Node.set_cookie(cookie)
     handle_connect(Node.connect(node_name), node_name)
 
     {:ok, modules} = :application.get_key(app_name, :modules)
+
     for module <- modules do
       handle_load_module(IEx.Helpers.nl([node_name], module), module, node_name)
     end
