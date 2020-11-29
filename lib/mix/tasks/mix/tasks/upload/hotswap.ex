@@ -1,12 +1,12 @@
 defmodule Mix.Tasks.Upload.Hotswap do
+  @moduledoc File.read!("./README.md")
+
   use Mix.Task
 
-  @moduledoc File.read!("./README.md")
   @requirements ["app.config"]
-  @shortdoc "Deploy local code changes to the remote node(s) in a hot-code-swapping manner"
-
   @config_key :mix_tasks_upload_hotswap
 
+  @shortdoc "Deploy local code changes to the remote node(s) in a hot-code-swapping manner"
   def run(_) do
     app_name = get_config_for(:app_name)
     nodes = get_config_for(:nodes)
