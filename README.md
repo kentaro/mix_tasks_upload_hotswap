@@ -100,7 +100,7 @@ index ca49896..81c696a 100644
 You can deploy the changes to the device as below:
 
 ```sh
-mix recombinant.deploy
+$ mix recombinant.deploy
 ==> nerves
 ==> example
 
