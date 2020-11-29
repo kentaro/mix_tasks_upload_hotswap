@@ -38,7 +38,7 @@ defmodule Recombinant do
   end
 
   defp handle_load_module({:ok, [{_, :loaded, _}]}, module, node_name) do
-      IO.puts("Successfully #{module} is deployed to #{node_name}")
+      IO.puts("Successfully deployed #{module} to #{node_name}")
   end
 
   defp handle_load_module({:error, reason}, module, node_name) do
