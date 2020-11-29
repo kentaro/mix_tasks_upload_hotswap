@@ -70,7 +70,7 @@ Make some changes into your code and just execute the mix task as below:
 $ mix upload.hotswap
 ```
 
-### Example
+### Illustration by `Example` App
 
 `Example` module has `hello` method as below:
 
