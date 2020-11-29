@@ -58,7 +58,7 @@ Notice that the node starts only when the `:env` of the application is set to `:
 config :example, env: Mix.env()
 ```
 
-See [example/lib/example/application.ex](./example/lib/example/application.ex) for working example.
+See [example/lib/example/application.ex](./example/lib/example/application.ex) and [example/config/config.exs](./example/config/config.exs) for working example.
 
 ## Usage
 
