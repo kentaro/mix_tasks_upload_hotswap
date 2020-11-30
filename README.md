@@ -1,6 +1,6 @@
 # Mix.Tasks.Upload.Hotswap
 
-This package provides a mix task named `mix upload.hotswap` to deploy local changes to remote node(s) and to apply them without rebooting whole the application (the so-called `hot code swapping`).
+This package provides a mix task named `mix upload.hotswap` to deploy local code changes to remote node(s) and to apply them without rebooting whole the application (the so-called `hot code swapping`).
 
 It could be convenient when you code for IoT devices backed by [Nerves](https://www.nerves-project.org/) because it's much faster than `mix firmware && mix upload`. Although you eventually need to update the firmware if you want to persist the changes onto devices, this task could be your help in development phase because it allows you to quickly confirm if your changes work fine on the devices without waiting long time.
 
@@ -20,8 +20,8 @@ end
 
 To use this package, you need to meet the requirements below:
 
-1. Add configurations for this task
-2. Start node through which your code changes are deployed
+1. Add configurations for `mix upload.hotswap`
+2. Start node(s) on your device(s) through which your code changes are deployed
 
 ### 1. Add configurations for `mix upload.hotswap`
 
@@ -38,7 +38,7 @@ All the pairs above are required to be set.
 
 See [example/config/config.exs](./example/config/config.exs) for working example.
 
-### 2. Start node through which your code changes are deployed
+### 2. Start node(s) on your device(s) through which your code changes are deployed
 
 Start a node which has the name and cookie set in the configuration above. The code should be like below:
 
@@ -72,7 +72,7 @@ $ mix upload.hotswap
 
 ### Illustration by `Example` App
 
-`Example` module has `hello` method as below:
+Imagine there is an `[Example](./example)` application which has `hello` method as below:
 
 ```elixir
 def hello do
@@ -80,7 +80,7 @@ def hello do
 end
 ```
 
-You can confirm the method invoked on the device:
+You can confirm the method invoked on your device:
 
 ```sh
 $ ssh nerves.local
