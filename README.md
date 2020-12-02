@@ -72,7 +72,7 @@ $ mix upload.hotswap
 
 ### Illustration by `Example` App
 
-Imagine there is an `[Example](./example)` application which has `hello` method as below:
+Imagine there is an [Example](./example) application which has `hello` method as below:
 
 ```elixir
 def hello do
