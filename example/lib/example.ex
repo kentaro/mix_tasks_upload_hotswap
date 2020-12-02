@@ -15,4 +15,8 @@ defmodule Example do
   def hello do
     :world
   end
+
+  def increment do
+    GenServer.call(Example.Counter, :increment)
+  end
 end

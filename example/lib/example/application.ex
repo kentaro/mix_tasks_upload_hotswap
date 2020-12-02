@@ -42,6 +42,7 @@ defmodule Example.Application do
       # Children for all targets except host
       # Starts a worker by calling: Example.Worker.start_link(arg)
       # {Example.Worker, arg},
+      {Example.Counter, 0}
     ]
   end
 
