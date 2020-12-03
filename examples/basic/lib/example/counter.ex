@@ -12,7 +12,7 @@ defmodule Example.Counter do
   end
 
   def handle_call(:increment, _from, count) do
-    {:reply, count + 2, count + 2}
+    {:reply, count + 1, count + 1}
   end
 
   def code_change(_old_vsn, count, _extra) do
