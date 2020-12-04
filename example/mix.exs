@@ -1,7 +1,7 @@
-defmodule Device.MixProject do
+defmodule Example.MixProject do
   use Mix.Project
 
-  @app :device
+  @app :example
   @version "0.1.0"
   @all_targets [:rpi, :rpi0, :rpi2, :rpi3, :rpi3a, :rpi4, :bbb, :osd32mp1, :x86_64]
 
@@ -22,7 +22,7 @@ defmodule Device.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {Device.Application, []},
+      mod: {Example.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -50,10 +50,9 @@ defmodule Device.MixProject do
       {:nerves_system_bbb, "~> 2.8", runtime: false, targets: :bbb},
       {:nerves_system_osd32mp1, "~> 0.4", runtime: false, targets: :osd32mp1},
       {:nerves_system_x86_64, "~> 1.13", runtime: false, targets: :x86_64},
-      {:circuits_gpio, "~> 0.4"},
 
       # Local dependencies
-      {:mix_tasks_upload_hotswap, path: "../../", only: :dev}
+      {:mix_tasks_upload_hotswap, path: "../", only: :dev}
     ]
   end
 
