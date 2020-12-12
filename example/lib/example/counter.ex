@@ -1,7 +1,7 @@
 defmodule Example.Counter do
   use GenServer
 
-  @vsn 1
+  @vsn "1"
 
   def start_link(count) do
     GenServer.start_link(__MODULE__, count, name: __MODULE__)
