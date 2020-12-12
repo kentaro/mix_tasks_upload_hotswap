@@ -14,8 +14,4 @@ defmodule Example.Counter do
   def handle_call(:increment, _from, count) do
     {:reply, count + 1, count + 1}
   end
-
-  def code_change(_old_vsn, count, _extra) do
-    {:ok, count}
-  end
 end
