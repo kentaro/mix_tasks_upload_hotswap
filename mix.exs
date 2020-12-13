@@ -8,7 +8,15 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      xref: [exclude: IEx.Helpers]
+      xref: [exclude: IEx.Helpers],
+
+      # Docs
+      name: "mix upload.hotswap",
+      source_url: "https://github.com/kentaro/mix_tasks_upload_hotswap",
+      homepage_url: "https://github.com/kentaro/mix_tasks_upload_hotswap",
+      docs: [
+        main: "Mix.Tasks.Upload.Hotswap",
+      ]
     ]
   end
 
@@ -24,6 +32,7 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false},
     ]
   end
 end
