@@ -1,4 +1,5 @@
-# Mix.Tasks.Upload.Hotswap
+# Mix.Tasks.Upload.Hotswap [![hex.pm version](https://img.shields.io/hexpm/v/mix_tasks_upload_hotswap.svg)](https://hex.pm/packages/mix_tasks_upload_hotswap)
+
 
 This package provides a mix task named `mix upload.hotswap` to deploy local code changes to remote node(s) and to apply them without rebooting whole the application (the so-called `hot code swapping`).
 
