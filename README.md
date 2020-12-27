@@ -59,7 +59,7 @@ Notice that the node starts only when the `:env` of the application is set to `:
 config :example, env: Mix.env()
 ```
 
-See [example/lib/example/application.ex](./example/lib/example/application.ex) and [example/config/config.exs](./example/config/config.exs) for working example.
+See [example/lib/example/application.ex](https://github.com/kentaro/mix_tasks_upload_hotswap/blob/main/example/lib/example/application.ex) and [example/config/config.exs](https://github.com/kentaro/mix_tasks_upload_hotswap/blob/main/example/config/config.exs) for working example.
 
 ## Usage
 
@@ -73,7 +73,7 @@ $ mix upload.hotswap
 
 ### Illustration by `Example` App
 
-Imagine there is an [Example](./example) application which has `hello` method as below:
+Imagine there is an [Example](https://github.com/kentaro/mix_tasks_upload_hotswap/tree/main/example) application which has `hello` method as below:
 
 ```elixir
 def hello do
