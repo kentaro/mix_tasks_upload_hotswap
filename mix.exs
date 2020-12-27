@@ -14,7 +14,7 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
       deps: deps(),
       xref: [exclude: IEx.Helpers],
       package: package(),
-      docs: docs(),
+      docs: docs()
     ]
   end
 
@@ -30,7 +30,7 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-      {:ex_doc, "~> 0.23", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false}
     ]
   end
 
@@ -54,7 +54,7 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
 
   defp docs do
     [
-      main: "Mix.Tasks.Upload.Hotswap",
+      main: "Mix.Tasks.Upload.Hotswap"
     ]
   end
 end
