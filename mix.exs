@@ -4,7 +4,7 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
   def project do
     [
       app: :mix_tasks_upload_hotswap,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "mix upload.hotswap",
@@ -41,7 +41,14 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
   defp package do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/kentaro/mix_tasks_upload_hotswap"}
+      links: %{"GitHub" => "https://github.com/kentaro/mix_tasks_upload_hotswap"},
+      files: [
+        # These are the default files
+        "lib",
+        "LICENSE",
+        "mix.exs",
+        "README.md"
+      ]
     ]
   end
 
