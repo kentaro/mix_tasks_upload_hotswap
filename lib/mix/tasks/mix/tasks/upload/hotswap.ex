@@ -54,10 +54,10 @@ defmodule Mix.Tasks.Upload.Hotswap do
   end
 
   defp handle_load_module({:ok, [{_, :loaded, _}]}, module, node) do
-    IO.puts("Successfully deployed #{module} to #{node}")
+    Mix.shell().info("Successfully deployed #{module} to #{node}")
   end
 
   defp handle_load_module({:error, reason}, module, node) do
-    IO.warn("Failed to deploy #{module} to #{node}: #{reason}")
+    Mix.shell().error("Failed to deploy #{module} to #{node}: #{reason}")
   end
 end
