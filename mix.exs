@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Upload.Hotswap.MixProject do
     [
       app: :mix_tasks_upload_hotswap,
       version: "0.1.1",
-      elixir: "~> 1.11",
+      elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       name: "mix upload.hotswap",
       source_url: "https://github.com/kentaro/mix_tasks_upload_hotswap",
