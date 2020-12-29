@@ -37,7 +37,7 @@ config :mix_tasks_upload_hotswap,
 
 All the pairs above are required to be set.
 
-See [example/config/config.exs](./example/config/config.exs) for working example.
+See [example/config/config.exs](https://github.com/kentaro/mix_tasks_upload_hotswap/blob/main/example/config/config.exs) for working example.
 
 ### 2. Start node(s) on your device(s) through which your code changes are deployed
 
