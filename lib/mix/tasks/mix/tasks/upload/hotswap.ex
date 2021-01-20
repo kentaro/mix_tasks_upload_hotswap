@@ -22,9 +22,13 @@ defmodule Mix.Tasks.Upload.Hotswap do
 
     {:ok, modules} = :application.get_key(app_name, :modules)
 
-    for module <- modules do
-      for node <- nodes do
-        handle_load_module(IEx.Helpers.nl([node], module), module, node)
+    # upload the modules twice to ensure the codes on the remote devices fully replaced
+    # https://erlang.org/doc/reference_manual/code_loading.html#code-replacement
+    for _ <- 0..1 do
+      for module <- modules do
+        for node <- nodes do
+         handle_load_module(IEx.Helpers.nl([node], module), module, node)
+        end
       end
     end
   end
