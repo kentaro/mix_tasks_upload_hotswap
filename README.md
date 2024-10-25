@@ -138,6 +138,18 @@ iex(example@nerves.local)1> Example.hello
 
 It's much faster than `mix firmware && mix upload`.
 
+### Options
+
+#### --node
+
+You can specify the node(s) in the cluster as below:
+
+```sh
+$ mix upload.hotswap --node example@nerves.local
+```
+
+This `--node` option can be used multiple times.
+
 ## Acknowledgement
 
 [Using Erlang Distribution to test hardware - Embedded Elixir](https://embedded-elixir.com/post/2018-12-10-using-distribution-to-test-hardware/) inspired me how to implement this package.
