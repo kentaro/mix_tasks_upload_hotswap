@@ -35,10 +35,23 @@ defmodule Mix.Tasks.Upload.Hotswap do
         Enum.filter(nodes, &(&1 in targets))
       end
 
+    target_modules =
+      if is_nil(opts[:module]) do
+        modules
+      else
+        targets =
+          Keyword.get_values(opts, :module)
+          |> Enum.map(&if String.starts_with?(&1, "Elixir"), do: &1, else: "Elixir.#{&1}")
+
+        Enum.reduce(targets, [], fn target, acc ->
+          acc ++ Enum.filter(modules, &String.starts_with?(to_string(&1), target))
+        end)
+      end
+
     # upload the modules twice to ensure the codes on the remote devices fully replaced
     # https://erlang.org/doc/reference_manual/code_loading.html#code-replacement
     for _ <- 0..1 do
-      for module <- modules do
+      for module <- target_modules do
         for node <- target_nodes do
           handle_load_module(IEx.Helpers.nl([node], module), module, node)
         end
@@ -51,7 +64,8 @@ defmodule Mix.Tasks.Upload.Hotswap do
     {opts, _, _} =
       OptionParser.parse(args,
         strict: [
-          node: :keep
+          node: :keep,
+          module: :keep
         ]
       )
 

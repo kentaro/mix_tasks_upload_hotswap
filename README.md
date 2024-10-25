@@ -150,6 +150,19 @@ $ mix upload.hotswap --node example@nerves.local
 
 This `--node` option can be used multiple times.
 
+#### --module
+
+You can specify the module(s) as below:
+
+```sh
+$ mix upload.hotswap --module YourGoodApp
+```
+
+This `--module` option
+
+  - can be used multiple times.
+  - searches for all modules that start with the specified module name.
+
 ## Acknowledgement
 
 [Using Erlang Distribution to test hardware - Embedded Elixir](https://embedded-elixir.com/post/2018-12-10-using-distribution-to-test-hardware/) inspired me how to implement this package.
