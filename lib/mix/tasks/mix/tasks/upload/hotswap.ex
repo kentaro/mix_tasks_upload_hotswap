@@ -7,7 +7,9 @@ defmodule Mix.Tasks.Upload.Hotswap do
   @config_key :mix_tasks_upload_hotswap
 
   @shortdoc "Deploy local code changes to the remote node(s) in a hot-code-swapping manner"
-  def run(_) do
+  def run(args) do
+    opts = parse_args(args)
+
     app_name = get_config_for(:app_name)
     nodes = get_config_for(:nodes)
     cookie = get_config_for(:cookie)
@@ -22,15 +24,52 @@ defmodule Mix.Tasks.Upload.Hotswap do
 
     {:ok, modules} = :application.get_key(app_name, :modules)
 
+    target_nodes =
+      if is_nil(opts[:node]) do
+        nodes
+      else
+        targets =
+          Keyword.get_values(opts, :node)
+          |> Enum.map(&:"#{&1}")
+
+        Enum.filter(nodes, &(&1 in targets))
+      end
+
+    target_modules =
+      if is_nil(opts[:module]) do
+        modules
+      else
+        targets =
+          Keyword.get_values(opts, :module)
+          |> Enum.map(&if String.starts_with?(&1, "Elixir"), do: &1, else: "Elixir.#{&1}")
+
+        Enum.reduce(targets, [], fn target, acc ->
+          acc ++ Enum.filter(modules, &String.starts_with?(to_string(&1), target))
+        end)
+      end
+
     # upload the modules twice to ensure the codes on the remote devices fully replaced
     # https://erlang.org/doc/reference_manual/code_loading.html#code-replacement
     for _ <- 0..1 do
-      for module <- modules do
-        for node <- nodes do
-         handle_load_module(IEx.Helpers.nl([node], module), module, node)
+      for module <- target_modules do
+        for node <- target_nodes do
+          handle_load_module(IEx.Helpers.nl([node], module), module, node)
         end
       end
     end
+  end
+
+  @spec parse_args(args :: [String.t()]) :: OptionParser.parsed()
+  def parse_args(args) do
+    {opts, _, _} =
+      OptionParser.parse(args,
+        strict: [
+          node: :keep,
+          module: :keep
+        ]
+      )
+
+    opts
   end
 
   defp get_config_for(key) do
